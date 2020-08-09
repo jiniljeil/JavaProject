@@ -13,7 +13,7 @@ public class Login {
 	public Login() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","wlsdlf159!");
+			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","id","password");
 			System.out.println(connect);
 //			connect.close();
 			st = connect.createStatement();
