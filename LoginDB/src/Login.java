@@ -33,7 +33,7 @@ public class Login {
 	public boolean LoginChecker(String id, String password) {
 		boolean check = false;
 		try {
-			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","wlsdlf159!");
+			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","dbpassword");
 			st = connect.createStatement();
 			
 			String SQL = "select * from information";
@@ -46,7 +46,7 @@ public class Login {
 					    ad = new Administrator();
 						ad.setVisible(true);
 						Main.getHomepage().setVisible(false);
-					}else { // client ·Î±×ÀÎ 
+					}else { // client ë¡œê·¸ì¸ 
 						clientPage = new client();
 						tempID = new String(rs.getString("num"));
 						clientPage.setLoginData(id,password);
@@ -61,7 +61,7 @@ public class Login {
 			}
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
-			System.out.println("°Ë»ö ¿À·ù");
+			System.out.println("ê²€ìƒ‰ ì˜¤ë¥˜");
 		}finally {
 			try {
 				connect.close();
@@ -74,7 +74,7 @@ public class Login {
 	}
 	
 	public void Signup(String sql) throws SQLException {
-		connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","wlsdlf159!");
+		connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","dbpassword");
 		st = connect.createStatement();
 		PreparedStatement ps = connect.prepareStatement(sql);
 		int r = ps.executeUpdate();
@@ -88,7 +88,7 @@ public class Login {
 	public int countList() {
 		int count = 0 ;
 		try {
-			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","wlsdlf159!");
+			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","dbpassword");
 			st = connect.createStatement();
 			String SQL = "select * from information";
 			rs = st.executeQuery(SQL);
@@ -111,7 +111,7 @@ public class Login {
 	public ArrayList<ArrayList<String>> getList(String sql) {
 		ArrayList<ArrayList<String>> data = new ArrayList<ArrayList<String>>();
 		try {
-			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","wlsdlf159!");
+			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","dbpassword");
 			st = connect.createStatement();
 			String SQL = sql;
 			rs = st.executeQuery(SQL); // select * from information
@@ -145,13 +145,13 @@ public class Login {
 	
 	public static void deleteUser(String sql) {
 		try {
-			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","wlsdlf159!");
+			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","dbpassword");
 			st = connect.createStatement();
 			String SQL = sql;
 			PreparedStatement ps = connect.prepareStatement(sql);
 			int r = ps.executeUpdate();
 			if(r == 1) {
-				System.out.println("»èÁ¦µÇ¾ú½À´Ï´Ù.");
+				System.out.println("ì‚­ì œë˜ì—ˆìŠµë‹ˆë‹¤.");
 			}
 		}catch(Exception e) {
 			e.getMessage();
@@ -167,12 +167,12 @@ public class Login {
 	
 	public void modifyNum(String sql) {
 		try{
-			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","wlsdlf159!");
+			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","dbpassword");
 			st = connect.createStatement();
 			PreparedStatement ps = connect.prepareStatement(sql);
 			int r = ps.executeUpdate();
 			if(r == 1) {
-				System.out.println("ÇĞ¹øÀÌ ¼öÁ¤ µÇ¾ú½À´Ï´Ù.");
+				System.out.println("í•™ë²ˆì´ ìˆ˜ì • ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			}
 		}catch(Exception e) {
 			e.getMessage();
@@ -187,12 +187,12 @@ public class Login {
 	}
 	public void modifyID(String sql) {
 		try{
-			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","wlsdlf159!");
+			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","dbpassword");
 			st = connect.createStatement();
 			PreparedStatement ps = connect.prepareStatement(sql);
 			int r = ps.executeUpdate();
 			if(r == 1) {
-				System.out.println("¾ÆÀÌµğ°¡ ¼öÁ¤ µÇ¾ú½À´Ï´Ù.");
+				System.out.println("ì•„ì´ë””ê°€ ìˆ˜ì • ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			}
 		}catch(Exception e) {
 			e.getMessage();
@@ -207,12 +207,12 @@ public class Login {
 	}
 	public void modifyPW(String sql) {
 		try{
-			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","wlsdlf159!");
+			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","dbpassword");
 			st = connect.createStatement();
 			PreparedStatement ps = connect.prepareStatement(sql);
 			int r = ps.executeUpdate();
 			if(r == 1) {
-				System.out.println("ºñ¹Ğ¹øÈ£°¡ ¼öÁ¤ µÇ¾ú½À´Ï´Ù.");
+				System.out.println("ë¹„ë°€ë²ˆí˜¸ê°€ ìˆ˜ì • ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			}
 		}catch(Exception e) {
 			e.getMessage();
@@ -230,7 +230,7 @@ public class Login {
 			PreparedStatement ps = connect.prepareStatement(sql);
 			int r = ps.executeUpdate();
 			if(r == 1) {
-				System.out.println("ÀüÈ­ ¹øÈ£°¡ ¼öÁ¤ µÇ¾ú½À´Ï´Ù.");
+				System.out.println("ì „í™” ë²ˆí˜¸ê°€ ìˆ˜ì • ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			}
 		}catch(Exception e) {
 			e.getMessage();
@@ -241,7 +241,7 @@ public class Login {
 			PreparedStatement ps = connect.prepareStatement(sql);
 			int r = ps.executeUpdate();
 			if(r == 1) {
-				System.out.println("ÀÌ¸ŞÀÏÀÌ ¼öÁ¤ µÇ¾ú½À´Ï´Ù.");
+				System.out.println("ì´ë©”ì¼ì´ ìˆ˜ì • ë˜ì—ˆìŠµë‹ˆë‹¤.");
 			}
 		}catch(Exception e) {
 			e.getMessage();
@@ -256,7 +256,7 @@ public class Login {
 		ArrayList<String> userData = new ArrayList<String>();
 		String SQL = String.format("select * from information where id='%s'", id);
 		try {
-			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","wlsdlf159!");
+			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","dbpassword");
 			st = connect.createStatement();
 			rs = st.executeQuery(SQL);
 			
@@ -294,7 +294,7 @@ public class Login {
 		String SQL = "select * from information";
 		String s_id = null;
 		try {
-			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","wlsdlf159!");
+			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","dbpassword");
 			st = connect.createStatement();
 			rs = st.executeQuery(SQL);
 			while(rs.next()) {
@@ -324,7 +324,7 @@ public class Login {
 		String SQL = "select * from information";
 		
 		try {
-			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","wlsdlf159!");
+			connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/student?serverTimezone=UTC","root","dbpassword");
 			st = connect.createStatement();
 			rs = st.executeQuery(SQL);
 			while(rs.next()) {
